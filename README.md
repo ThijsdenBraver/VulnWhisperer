@@ -212,7 +212,7 @@ This will create the image hasecuritysolutions/docker_vulnwhisperer:latest from 
 docker ps #check the images from the containers
 docker exec -i -t 665b4a1e17b6 /bin/bash #where 665b4a1e17b6 is the container image you want to troubleshoot
 ```
-You can also make sure that all ELK components are working by doing "curl -i host:9200 (elastic)/ host:5601 (kibana) /host:9600 (logstash). WARNING! It is possible that logstash is not exposing to the external network the port but it does to its internal docker network "esnet".
+You can also make sure that all ELK components are working by doing "curl -i host:9200 (elastic)/ host:5601 (kibana) /host:9600 (logstash). WARNING! It is possible that logstash is not exposing the port to the external network but it does to its internal docker network "esnet".
 - If Kibana is not showing the results, check that you are searching on the whole ES range, as by default it shows logs for the last 15 minutes (you can choose up to last 5 years)
 - X-Pack has been disabled by default due to the noise, plus being a trial version. You can enable it modifying the docker-compose.yml and docker/logstash.conf files. Logstash.conf contains the default credentials for the X-Pack enabled ES.
 - On Logstash container, "/usr/share/logstash/pipeline/" is the default path for pipelines and "/usr/share/logstash/config/" for logstash.yml file, instead of "/etc/logstash/conf.d/" and "/etc/logstash/".
